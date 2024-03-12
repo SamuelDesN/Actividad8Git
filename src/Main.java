@@ -5,8 +5,8 @@ public class Main {
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca();
 
-        Usuario usuario1 = new Usuario("Juan", "Perez", "123456789", "juan@example.com");
-        Usuario usuario2 = new Usuario("Maria", "Gomez", "987654321", "maria@example.com");
+        Usuario usuario1 = new Usuario("Pedro", "Perez", "123456789", "juan@example.com");
+        Usuario usuario2 = new Usuario("Candela", "Gomez", "987654321", "maria@example.com");
         biblioteca.agregarUsuario(usuario1);
         biblioteca.agregarUsuario(usuario2);
 
@@ -90,7 +90,7 @@ public class Main {
                 case 5:
                     System.out.print("Ingrese el nombre del usuario: ");
                     String nombreUsuarioDevolver = scanner.next();
-                    System.out.print("Ingrese el título del libro: ");
+                    System.out.print("Ingrese el titulo del libro: ");
                     String tituloLibroDevolver = scanner.next();
                     List<Usuario> usuariosDevolver = biblioteca.getUsuarios();
                     for (Usuario usuario : usuariosDevolver) {
