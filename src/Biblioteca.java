@@ -9,6 +9,15 @@ public class Biblioteca {
         this.usuarios = new ArrayList<>();
         this.libros = new ArrayList<>();
     }
+    private boolean disponible;
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
 
     public ArrayList<Usuario> getUsuarios() {
         return usuarios;
@@ -56,5 +65,12 @@ public class Biblioteca {
     public void devolverLibro(Usuario usuario, Libro libro) {
         usuario.devolverLibro(libro);
         System.out.println(usuario.getNombre() + " ha devuelto el libro " + libro.getTitulo());
+    }
+    public void reservarLibro(Usuario usuario, Libro libro) {
+        if (libro.isDisponible()) {
+            libro.setDisponible(false);
+        }
+        libro.agregarReserva(usuario);
+        System.out.println("El libro \"" + libro.getTitulo() + "\" ha sido reservado por " + usuario.getNombre());
     }
 }
