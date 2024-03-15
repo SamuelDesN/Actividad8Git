@@ -26,7 +26,7 @@ public class Libro {
     public String getIsbn() {
         return isbn;
     }
-    public boolean isDisponible() {
+    public boolean isDisponible(boolean disponible) {
         return disponible;
     }
 
@@ -34,11 +34,13 @@ public class Libro {
         this.disponible = disponible;
 
     }
-    public void agregarReserva(Usuario usuario) {
-        reservas.add(usuario);
-    }
 
     public ArrayList<Usuario> getReservas() {
         return reservas;
+    }
+
+    @Override
+    public String toString() {
+        return  titulo;
     }
 }

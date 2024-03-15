@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca();
 
+
         Usuario usuario1 = new Usuario("Pedro", "Perez", "123456789", "juan@example.com");
         Usuario usuario2 = new Usuario("Candela", "Gomez", "987654321", "maria@example.com");
         biblioteca.agregarUsuario(usuario1);
@@ -36,7 +37,8 @@ public class Main {
                 System.out.println("4. Pedir un libro");
                 System.out.println("5. Devolver un libro");
                 System.out.println("6. Reservar un libro");
-                System.out.println("7. Salir");
+                System.out.println("7. Ver libros reservados");
+                System.out.println("8. Salir");
                 System.out.print("Seleccione una opción: ");
                 opcion = scanner.nextInt();
 
@@ -49,7 +51,7 @@ public class Main {
 
                         System.out.print("Nombre del usuario: ");
                         String nombreUsuarioBuscar = scanner.next();
-                        boolean usuarioEncontrado = false; // Variable para indicar si se encontró el usuario
+                        boolean usuarioEncontrado = false;
 
                         for (Usuario usuario : biblioteca.getUsuarios()) {
                             if (usuario.getNombre().equals(nombreUsuarioBuscar)) {
@@ -58,8 +60,8 @@ public class Main {
                                 System.out.println("Apellido: " + usuario.getApellido());
                                 System.out.println("Teléfono: " + usuario.getTelefono());
                                 System.out.println("Email: " + usuario.getEmail());
-                                usuarioEncontrado = true; // Indicar que se encontró el usuario
-                                break; // Salir del bucle una vez que se encuentra el usuario
+                                usuarioEncontrado = true;
+                                break;
                             }
                         }
 
@@ -121,7 +123,7 @@ public class Main {
                         break;
                     case 6:
                         System.out.print("Ingrese su nombre para la reserva del libro: ");
-                        scanner.nextLine(); // Consumir el salto de línea pendiente
+                        scanner.nextLine();
                         String nombreUsuarioReserva = scanner.nextLine();
                         Usuario usuarioReserva = null;
                         for (Usuario usuario : biblioteca.getUsuarios()) {
@@ -136,7 +138,7 @@ public class Main {
                             String tituloLibroReservar = scanner.nextLine();
                             for (Libro libro : biblioteca.getLibros()) {
                                 if (libro.getTitulo().equalsIgnoreCase(tituloLibroReservar)) {
-                                    biblioteca.reservarLibro(usuarioReserva, libro); // Pasa el usuario que desea reservar el libro
+                                    biblioteca.reservarLibro(usuarioReserva, libro);
                                     break;
                                 }
                             }
@@ -145,6 +147,24 @@ public class Main {
                         }
                         break;
                     case 7:
+                        System.out.print("Ingrese su nombre para ver los libros reservados: ");
+                        scanner.nextLine();
+                        String nombreUsuarioReservado = scanner.nextLine();
+                        Usuario usuarioReservado = null;
+                        for (Usuario usuario : biblioteca.getUsuarios()) {
+                            if (usuario.getNombre().equalsIgnoreCase(nombreUsuarioReservado)) {
+                                usuarioReservado = usuario;
+                                break;
+                            }
+                        }
+
+                        if (usuarioReservado != null) {
+                            System.out.print(usuarioReservado.getLibrosReservados());
+                        } else {
+                            System.out.println("Usuario no encontrado.");
+                        }
+                        break;
+                    case 8:
                         System.out.println("Saliendo del menu...");
                         System.exit(0);
                         break;

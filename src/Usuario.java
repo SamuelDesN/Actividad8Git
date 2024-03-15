@@ -6,6 +6,7 @@ public class Usuario {
     private String telefono;
     private String email;
     private ArrayList<Libro> librosPendientes;
+    private ArrayList<Libro> librosReservados;
 
     public Usuario(String nombre, String apellido, String telefono, String email) {
         this.nombre = nombre;
@@ -13,6 +14,7 @@ public class Usuario {
         this.telefono = telefono;
         this.email = email;
         this.librosPendientes = new ArrayList<>();
+        this.librosReservados= new ArrayList<>();
     }
 
     public String getNombre() {
@@ -34,7 +36,13 @@ public class Usuario {
     public ArrayList<Libro> getLibrosPendientes() {
         return librosPendientes;
     }
+    public ArrayList<Libro> getLibrosReservados() {
+        return librosReservados;
+    }
 
+    public void agregarReserva(Libro libro) {
+        librosReservados.add(libro);
+    }
     public void agregarLibroPendiente(Libro libro) {
         librosPendientes.add(libro);
     }
@@ -42,4 +50,6 @@ public class Usuario {
     public void devolverLibro(Libro libro) {
         librosPendientes.remove(libro);
     }
+
+
 }
